@@ -95,32 +95,31 @@ app.post('/persons', (req, res) => {
     res.json(note);
 })
 
-app.put('/api/notes/:id', (req, res) => {
+app.put('/persons/:id', (req, res) => {
     const id = Number(req.params.id);
     const body = req.body;
 
     const note = notes.find(n => n.id === id);
     if (!note) {
-        return res.status(404).json({ error: 'note not found' });
+        return res.status(404).json({ error: 'person not found' });
     }
 
     const updatedNote = {
         ...note,
-        important: body.important
+        name: body.name,
+        number: body.number
     };
 
     notes = notes.map(n => n.id !== id ? n : updatedNote);
     res.json(updatedNote);
 });
 
-/*
-app.put('/api/notes/:id', (req, res) => {
+
+app.put('/persons/:id', (req, res) => {
     const id = Number(req.params.id);
     notes = notes.filter(n => n.id !== id);
     res.status(204).end();
 })
-    */
-
 
 const port = process.env.PORT || 3001;
 
