@@ -81,14 +81,14 @@ const generateId = () => {
 
 app.post('/persons', (req, res) => {
     const body = req.body;
-    if(!body.content){
+    if(!body.name || !body.number) {
         return res.status (400).json(
             {error: 'content missing'}
         )
     }
     const note = {
         id: generateId(),
-        name: body.content,
+        name: body.name,
         number: body.number
     }
     notes = [...notes, note];
