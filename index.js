@@ -114,13 +114,6 @@ app.put('/persons/:id', (req, res) => {
     res.json(updatedNote);
 });
 
-
-app.put('/persons/:id', (req, res) => {
-    const id = Number(req.params.id);
-    notes = notes.filter(n => n.id !== id);
-    res.status(204).end();
-})
-
 const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
