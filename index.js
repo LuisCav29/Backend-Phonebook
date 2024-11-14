@@ -96,7 +96,7 @@ app.post('/persons', (req, res) => {
 })
 
 app.put('/persons/:id', (req, res) => {
-    const id = Number(req.params.id);
+    const id = req.params.id;
     const body = req.body;
 
     const note = notes.find(n => n.id === id);
