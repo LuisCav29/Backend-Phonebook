@@ -67,7 +67,7 @@ app.get('/persons', (req, res) => {
 })
 
 app.delete('/persons/:id', (req, res) => {
-    const id = Number(req.params.id);
+    const id = req.params.id;
     notes = notes.filter(n => n.id !== id);
     res.status(204).end();
 })
